@@ -10,8 +10,7 @@ import {
 } from "react-icons/di";
 import {SiFirebase,} from "react-icons/si";
 import { FaJava, FaPython, FaHtml5, FaCss3Alt } from "react-icons/fa";
-
-import {  TbSql } from "react-icons/tb";
+import { TbSql } from "react-icons/tb";
 
 function Techstack() {
   return (
@@ -52,7 +51,6 @@ function Techstack() {
       <Col xs={4} md={2} className="tech-icons">
         <SiFirebase />
       </Col>
-
     </Row>
   );
 }

@@ -1,6 +1,6 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "abinash-portfolio",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -25,11 +25,18 @@
     "typewriter-effect": "^2.18.2",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "terser": "^5.10.0",
+    "cssnano": "^5.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "install": "npm install --legacy-peer-deps",
+    "minify-js": "terser src/js/*.js -o dist/js --compress --mangle",
+    "minify-css": "cssnano src/css/*.css -o dist/css"
   },
   "eslintConfig": {
     "extends": [

@@ -1,23 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home/Home";
-import About from "./components/About/About";
-import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
-import Resume from "./components/Resume/ResumeNew";
-import Contact from "./pages/Contact";
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate
-} from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+const Home = lazy(() => import("./components/Home/Home"));
+const About = lazy(() => import("./components/About/About"));
+const Projects = lazy(() => import("./components/Projects/Projects"));
+const Resume = lazy(() => import("./components/Resume/ResumeNew"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 function App() {
   const [load, updateLoad] = useState(true);
@@ -36,14 +31,16 @@ function App() {
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/project" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Navigate to="/"/>} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/project" element={<Projects />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Navigate to="/"/>} />
+          </Routes>
+        </Suspense>
         <Footer />
       </div>
     </Router>

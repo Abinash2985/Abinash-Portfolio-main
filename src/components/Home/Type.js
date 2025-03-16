@@ -1,6 +1,5 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
-
 function Type() {
   return (
     <Typewriter
@@ -9,7 +8,6 @@ function Type() {
           "Web Developer",
           "React  Developer",
           "MERN Stack Developer",
-          
         ],
         autoStart: true,
         loop: true,
@@ -18,5 +16,4 @@ function Type() {
     />
   );
 }
-
 export default Type;
